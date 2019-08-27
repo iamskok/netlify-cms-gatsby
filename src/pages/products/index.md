@@ -1,6 +1,5 @@
 ---
-templateKey: 'product-page'
-path: /products
+templateKey: product-page
 title: Our Coffee
 image: /img/jumbotron.jpg
 heading: Great coffee with a conscience
@@ -69,6 +68,8 @@ testimonials:
     quote: >-
       Kaldi is the place to go if you want the best quality coffee. I love their
       stance on empowering farmers and transparency.
+  - author: Everyone
+    quote: 'Better than Starbucks '
 full_image: /img/products-full-width.jpg
 pricing:
   heading: Monthly subscriptions
@@ -99,3 +100,4 @@ pricing:
       plan: Custom
       price: '??'
 ---
+
