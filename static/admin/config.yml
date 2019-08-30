@@ -20,29 +20,29 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: "Title", name: "title", widget: string, required: true}
-          - {label: "Heading", name: "heading", widget: string, required: true}
-          - {label: "Phone", name: "phone", widget: object, required: true, fields: [
-              {label: "Phone", name: "phone", widget: string},
-              {label: Link, name: link, widget: string}
-            ]}
-          - {label: "Services", name: "services", widget: object, required: true, fields: [
-              {label: "Title", name: "title", widget: string},
-              {label: Description, name: description, widget: markdown, required: true},
-              {label: "Taxation", name: "taxation", widget: object, required: true, fields: [
-                {label: "Title", name: "title", widget: string},
-                {label: Description, name: description, widget: markdown}
-              ]},
-              {label: "Consulting", name: "consulting", widget: object, required: true, fields: [
-                {label: "Title", name: "title", widget: string},
-                {label: Description, name: description, widget: markdown}
-              ]},
-              {label: "Accounting", name: "accounting", widget: object, required: true, fields: [
-                {label: "Title", name: "title", widget: string},
-                {label: Description, name: description, widget: markdown}
-              ]}
-            ]}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
+      - {label: "Title", name: "title", widget: string, required: true}
+      - {label: "Heading", name: "heading", widget: string, required: true}
+      - {label: "Phone", name: "phone", widget: object, required: true, fields: [
+          {label: "Phone", name: "phone", widget: string},
+          {label: Link, name: link, widget: string}
+        ]}
+      - {label: "Services", name: "services", widget: object, required: true, fields: [
+          {label: "Title", name: "title", widget: string},
+          {label: Description, name: description, widget: markdown, required: true},
+          {label: "Taxation", name: "taxation", widget: object, required: true, fields: [
+            {label: "Title", name: "title", widget: string},
+            {label: Description, name: description, widget: markdown}
+          ]},
+          {label: "Consulting", name: "consulting", widget: object, required: true, fields: [
+            {label: "Title", name: "title", widget: string},
+            {label: Description, name: description, widget: markdown}
+          ]},
+          {label: "Accounting", name: "accounting", widget: object, required: true, fields: [
+            {label: "Title", name: "title", widget: string},
+            {label: Description, name: description, widget: markdown}
+          ]}
+        ]}
 
   - name: "pages"
     label: "Pages"
