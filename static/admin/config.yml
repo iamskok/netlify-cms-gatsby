@@ -2,11 +2,11 @@ backend:
   name: git-gateway
   branch: master
   commit_messages:
-    create: "cms: add {{collection}} {{slug}}"
-    update: "cms: edit {{collection}} {{slug}}"
-    delete: "cms: remove {{collection}} {{slug}}"
-    uploadMedia: "cms(media): add {{path}}"
-    deleteMedia: "cms(media): remove {{path}}"
+    create: "cms add {{collection}} {{slug}}"
+    update: "cms edit {{collection}} {{slug}}"
+    delete: "cms remove {{collection}} {{slug}}"
+    uploadMedia: "cms(media) add {{path}}"
+    deleteMedia: "cms(media) remove {{path}}"
 
 media_folder: static/img
 public_folder: /img
@@ -18,7 +18,7 @@ collections:
     label: "Blog"
     folder: "src/pages/blog"
     create: true
-    slug: "{{ slug }}"
+    slug: "{{slug}}"
     fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
           - {label: "Title", name: "title", widget: string, required: true}
