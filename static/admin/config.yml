@@ -1,24 +1,24 @@
 backend:
   name: git-gateway
   branch: master
-  commit_messages:
-    create: "cms: add {{collection}} {{slug}}"
-    update: "cms: edit {{collection}} {{slug}}"
-    delete: "cms: remove {{collection}} {{slug}}"
-    uploadMedia: "cms(media): add {{path}}"
-    deleteMedia: "cms(media): remove {{path}}"
+  # commit_messages:
+  #   create: "cms: add {{collection}} {{slug}}"
+  #   update: "cms: edit {{collection}} {{slug}}"
+  #   delete: "cms: remove {{collection}} {{slug}}"
+  #   uploadMedia: "cms(media): add {{path}}"
+  #   deleteMedia: "cms(media): remove {{path}}"
 
 media_folder: static/img
 public_folder: /img
-publish_mode: editorial_workflow
+# https://www.netlifycms.org/docs/beta-features/
+# media_folder_relative: true
 
 collections:
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
     create: true
-    slug: "{{slug}}"
-    preview_path: blog/{{slug}}
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "Title", name: "title", widget: "string"}
@@ -33,18 +33,33 @@ collections:
     label: "Pages"
     files:
       - file: "src/pages/index.md"
-        label: "Landing Page"
+        label: "Home Page"
         name: "index"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: Title, name: title, widget: string}
-          - {label: Image, name: image, widget: image}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Subheading, name: subheading, widget: string}
-          - {label: Mainpitch, name: mainpitch, widget: object, fields: [{label: Title, name: title, widget: string}, {label: Description, name: description, widget: text}]}
-          - {label: Description, name: description, widget: string}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          - {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string}, {label: Description, name: description, widget: text}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image}, {label: Alt, name: alt, widget: string}]}]}
+          - {label: "Title", name: "title", widget: string, required: true}
+          - {label: "Heading", name: "heading", widget: string, required: true}
+          - {label: "Phone", name: "phone", widget: object, required: true, fields: [
+              {label: "Phone", name: "phone", widget: string},
+              {label: Link, name: link, widget: string}
+            ]}
+          - {label: "Services", name: "services", widget: object, required: true, fields: [
+              {label: "Title", name: "title", widget: string},
+              {label: Description, name: description, widget: markdown, required: true},
+              {label: "Taxation", name: "taxation", widget: object, required: true, fields: [
+                {label: "Title", name: "title", widget: string},
+                {label: Description, name: description, widget: markdown}
+              ]},
+              {label: "Consulting", name: "consulting", widget: object, required: true, fields: [
+                {label: "Title", name: "title", widget: string},
+                {label: Description, name: description, widget: markdown}
+              ]},
+              {label: "Accounting", name: "accounting", widget: object, required: true, fields: [
+                {label: "Title", name: "title", widget: string},
+                {label: Description, name: description, widget: markdown}
+              ]}
+            ]}
+
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"
