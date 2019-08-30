@@ -1,12 +1,12 @@
 backend:
   name: git-gateway
   branch: master
-  # commit_messages:
-  #   create: "cms: add {{collection}} {{slug}}"
-  #   update: "cms: edit {{collection}} {{slug}}"
-  #   delete: "cms: remove {{collection}} {{slug}}"
-  #   uploadMedia: "cms(media): add {{path}}"
-  #   deleteMedia: "cms(media): remove {{path}}"
+  commit_messages:
+    create: "cms: add {{collection}} {{slug}}"
+    update: "cms: edit {{collection}} {{slug}}"
+    delete: "cms: remove {{collection}} {{slug}}"
+    uploadMedia: "cms(media): add {{path}}"
+    deleteMedia: "cms(media): remove {{path}}"
 
 media_folder: static/img
 public_folder: /img
@@ -18,16 +18,31 @@ collections:
     label: "Blog"
     folder: "src/pages/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{ slug }}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      - {label: "Featured Image", name: "featuredimage", widget: image}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "list"}
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
+          - {label: "Title", name: "title", widget: string, required: true}
+          - {label: "Heading", name: "heading", widget: string, required: true}
+          - {label: "Phone", name: "phone", widget: object, required: true, fields: [
+              {label: "Phone", name: "phone", widget: string},
+              {label: Link, name: link, widget: string}
+            ]}
+          - {label: "Services", name: "services", widget: object, required: true, fields: [
+              {label: "Title", name: "title", widget: string},
+              {label: Description, name: description, widget: markdown, required: true},
+              {label: "Taxation", name: "taxation", widget: object, required: true, fields: [
+                {label: "Title", name: "title", widget: string},
+                {label: Description, name: description, widget: markdown}
+              ]},
+              {label: "Consulting", name: "consulting", widget: object, required: true, fields: [
+                {label: "Title", name: "title", widget: string},
+                {label: Description, name: description, widget: markdown}
+              ]},
+              {label: "Accounting", name: "accounting", widget: object, required: true, fields: [
+                {label: "Title", name: "title", widget: string},
+                {label: Description, name: description, widget: markdown}
+              ]}
+            ]}
 
   - name: "pages"
     label: "Pages"
